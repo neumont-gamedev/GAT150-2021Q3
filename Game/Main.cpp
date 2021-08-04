@@ -1,5 +1,7 @@
-#include <iostream>
+#include "Engine.h"
 #include <SDL.h>
+#include <SDL_image.h>
+#include <iostream>
 
 int main(int, char**)
 {
@@ -9,7 +11,9 @@ int main(int, char**)
 		return 1;
 	}
 
-	SDL_Window* window = SDL_CreateWindow("GAT150", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
+
+	SDL_Window* window = SDL_CreateWindow("GAT150", 100, 100, 800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if (window == nullptr) 
 	{
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
@@ -17,10 +21,37 @@ int main(int, char**)
 		return 1;
 	}
 
-	// wait for keyboard enter to exit
-	std::getchar();
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
+	std::cout << nc::GetFilePath() << std::endl;
+	nc::SetFilePath("../Resources");
+	std::cout << nc::GetFilePath() << std::endl;
 
+	// load surface
+	SDL_Surface* surface = IMG_Load("sf2.png");
+	// create texture
+	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_FreeSurface(surface);
+
+	bool quit = false;
+	SDL_Event event;
+	while (!quit)
+	{
+		SDL_WaitEvent(&event);
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			quit = true;
+			break;
+		}
+
+		SDL_Rect dstrect{ 10, 10, 64, 96 };
+
+		SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+		SDL_RenderPresent(renderer);
+	}
+
+	IMG_Quit();
 	SDL_Quit();
 
 	return 0;
