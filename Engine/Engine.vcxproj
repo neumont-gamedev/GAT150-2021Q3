@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\FileSystem.cpp" />
+    <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Framework\EventSystem.cpp" />
     <ClCompile Include="Graphics\Renderer.cpp" />
@@ -185,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\FileSystem.h" />
+    <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Framework\EventSystem.h" />
     <ClInclude Include="Framework\System.h" />

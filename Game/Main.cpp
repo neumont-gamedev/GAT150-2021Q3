@@ -23,9 +23,10 @@ int main(int, char**)
 		scene.AddActor(std::move(actor));
 	}
 
-
 	bool quit = false;
 	SDL_Event event;
+	float quitTime = engine.time.time + 3.0f;
+
 	while (!quit)
 	{
 		SDL_PollEvent(&event);
@@ -35,14 +36,18 @@ int main(int, char**)
 			quit = true;
 			break;
 		}
-		
-		engine.Update(0);
-		scene.Update(0);
 
+		// update
+		engine.Update();
+		scene.Update(engine.time.deltaTime);
+
+		//std::cout << engine.time.time << std::endl;
+		if (engine.time.time >= quitTime) quit = true;
+		engine.time.timeScale = 0.1f;
+
+		// draw
 		engine.Get<nc::Renderer>()->BeginFrame();
-
 		scene.Draw(engine.Get<nc::Renderer>());
-
 		engine.Get<nc::Renderer>()->EndFrame();
 	}
 	
