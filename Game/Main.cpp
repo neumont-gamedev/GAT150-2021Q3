@@ -14,6 +14,10 @@ int main(int, char**)
 
 	nc::SetFilePath("../Resources");
 
+	engine.Get<nc::AudioSystem>()->AddAudio("explosion", "audio/explosion.wav");
+	engine.Get<nc::AudioSystem>()->AddAudio("music", "audio/music.mp3");
+	nc::AudioChannel channel = engine.Get<nc::AudioSystem>()->PlayAudio("music", 1, 1, true);
+
 	std::shared_ptr<nc::Texture> texture = engine.Get<nc::ResourceSystem>()->Get<nc::Texture>("sf2.png", engine.Get<nc::Renderer>());
 
 	for (size_t i = 0; i < 10; i++)
@@ -52,6 +56,8 @@ int main(int, char**)
 			engine.Get<nc::ParticleSystem>()->Create(position, 20, 3, engine.Get<nc::ResourceSystem>()->Get<nc::Texture>("particle01.png", engine.Get<nc::Renderer>()), 100);
 			// create particles
 			//std::cout << position.x << " " << position.y << std::endl;
+			engine.Get<nc::AudioSystem>()->PlayAudio("explosion", 1, nc::RandomRange(0.2f, 2.0f));
+			channel.SetPitch(nc::RandomRange(0.2f, 2.0f));
 		}
 
 		//std::cout << engine.time.time << std::endl;
