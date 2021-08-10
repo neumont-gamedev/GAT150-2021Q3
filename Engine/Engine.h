@@ -14,9 +14,13 @@
 #include "Math/MathUtils.h"
 #include "Math/Transform.h"
 
+// input
+#include "Input/InputSystem.h"
+
 // graphics
 #include "Graphics/Renderer.h"
 #include "Graphics/Texture.h"
+#include "Graphics/ParticleSystem.h"
 
 // framework
 #include "Framework/EventSystem.h"
@@ -41,7 +45,7 @@ namespace nc
 		void Shutdown();
 
 		void Update();
-		void Draw();
+		void Draw(Renderer* renderer);
 
 		template<typename T>
 		T* Get();
