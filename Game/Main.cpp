@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include <cassert>
 
 int main(int, char**)
 {
@@ -85,7 +86,6 @@ int main(int, char**)
 		nc::Transform t;
 		t.position = { 30, 30 };
 		engine.Get<nc::Renderer>()->Draw(textTexture, t);
-
 
 		engine.Get<nc::Renderer>()->EndFrame();
 	}

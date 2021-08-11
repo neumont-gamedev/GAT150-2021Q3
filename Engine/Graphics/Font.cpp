@@ -1,4 +1,5 @@
 #include "Font.h"
+#include <cassert>
 
 namespace nc
 {
@@ -12,6 +13,8 @@ namespace nc
 
 	bool Font::Load(const std::string& name, void* data)
 	{
+		assert(data);
+
 		font = TTF_OpenFont(name.c_str(), *static_cast<int*>(data));
 		if (font == nullptr)
 		{

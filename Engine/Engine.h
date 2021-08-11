@@ -1,7 +1,7 @@
 #pragma once
 
-
 // core
+#include "Core/Utilities.h"
 #include "Core/FileSystem.h"
 #include "Core/Timer.h"
 
@@ -14,7 +14,6 @@
 
 // audio
 #include "Audio/AudioSystem.h"
-
 
 // input
 #include "Input/InputSystem.h"

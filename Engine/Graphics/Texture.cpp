@@ -2,16 +2,21 @@
 #include "Graphics/Renderer.h"
 #include <SDL_image.h>
 #include <iostream>
+#include <cassert>
 
 namespace nc
 {
 	Texture::Texture(Renderer* renderer)
 	{
+		assert(renderer);
+
 		this->renderer = renderer->renderer;
 	}
 
 	bool Texture::Create(SDL_Surface* surface)
 	{
+		assert(surface);
+
 		// create texture
 		texture = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_FreeSurface(surface);

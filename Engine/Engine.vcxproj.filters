@@ -86,6 +86,9 @@
     <ClCompile Include="Graphics\Font.cpp">
       <Filter>Source\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Utilities.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\EventSystem.h">
@@ -159,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="Graphics\Font.h">
       <Filter>Source\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Utilities.h">
+      <Filter>Source\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
