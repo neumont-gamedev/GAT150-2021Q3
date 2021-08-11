@@ -14,6 +14,18 @@ int main(int, char**)
 
 	nc::SetFilePath("../Resources");
 
+	// get font from resource system
+	int size = 24;
+	std::shared_ptr<nc::Font> font = engine.Get<nc::ResourceSystem>()->Get<nc::Font>("fonts/arial.ttf", &size);
+
+	// create font texture
+	std::shared_ptr<nc::Texture> textTexture = std::make_shared<nc::Texture>(engine.Get<nc::Renderer>());
+	// set font texture with font surface
+	textTexture->Create(font->CreateSurface("hello world", nc::Color{ 1, 1, 1 }));
+	// add font texture to resource system
+	engine.Get<nc::ResourceSystem>()->Add("textTexture", textTexture);
+
+
 	engine.Get<nc::AudioSystem>()->AddAudio("explosion", "audio/explosion.wav");
 	engine.Get<nc::AudioSystem>()->AddAudio("music", "audio/music.mp3");
 	nc::AudioChannel channel = engine.Get<nc::AudioSystem>()->PlayAudio("music", 1, 1, true);
@@ -69,6 +81,11 @@ int main(int, char**)
 
 		scene.Draw(engine.Get<nc::Renderer>());
 		engine.Draw(engine.Get<nc::Renderer>());
+
+		nc::Transform t;
+		t.position = { 30, 30 };
+		engine.Get<nc::Renderer>()->Draw(textTexture, t);
+
 
 		engine.Get<nc::Renderer>()->EndFrame();
 	}
