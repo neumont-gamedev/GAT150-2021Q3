@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Actors/Player.h"
 
 void Game::Initialize()
 {
@@ -26,16 +27,16 @@ void Game::Initialize()
 
 	engine->Get<nc::AudioSystem>()->AddAudio("explosion", "audio/explosion.wav");
 	engine->Get<nc::AudioSystem>()->AddAudio("music", "audio/music.mp3");
-	musicChannel = engine->Get<nc::AudioSystem>()->PlayAudio("music", 1, 1, true);
+	//musicChannel = engine->Get<nc::AudioSystem>()->PlayAudio("music", 1, 1, true);
 
-	std::shared_ptr<nc::Texture> texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("sf2.png", engine->Get<nc::Renderer>());
+	//std::shared_ptr<nc::Texture> texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("sf2.png", engine->Get<nc::Renderer>());
 
-	for (size_t i = 0; i < 10; i++)
-	{
-		nc::Transform transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0, 600)}, nc::RandomRange(0, 360), 1.0f };
-		std::unique_ptr<nc::Actor> actor = std::make_unique<nc::Actor>(transform, texture);
-		scene->AddActor(std::move(actor));
-	}
+	//for (size_t i = 0; i < 10; i++)
+	//{
+	//	nc::Transform transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0, 600)}, nc::RandomRange(0, 360), 1.0f };
+	//	std::unique_ptr<nc::Actor> actor = std::make_unique<nc::Actor>(transform, texture);
+	//	scene->AddActor(std::move(actor));
+	//}
 
 	// game
 	engine->Get<nc::AudioSystem>()->AddAudio("player_fire", "player_fire.wav");
@@ -53,6 +54,7 @@ void Game::Shutdown()
 
 void Game::Update()
 {
+	engine->Update();
 	stateTimer += engine->time.deltaTime;
 
 	switch (state)
@@ -84,9 +86,6 @@ void Game::Update()
 		break;
 	}
 
-	engine->Update();
-	scene->Update(engine->time.deltaTime);
-
 	if (engine->Get<nc::InputSystem>()->GetKeyState(SDL_SCANCODE_ESCAPE) == nc::InputSystem::eKeyState::Pressed)
 	{
 		quit = true;
@@ -101,10 +100,13 @@ void Game::Update()
 		musicChannel.SetPitch(nc::RandomRange(0.2f, 2.0f));
 	}
 
+	scene->Update(engine->time.deltaTime);
 }
 
 void Game::Draw()
 {
+	engine->Get<nc::Renderer>()->BeginFrame();
+
 	switch (state)
 	{
 	case Game::eState::Title:
@@ -131,18 +133,15 @@ void Game::Draw()
 	//graphics.DrawString(30, 20, std::to_string(score).c_str());
 	//graphics.DrawString(750, 20, std::to_string(lives).c_str());
 
-	// draw
-	engine->Get<nc::Renderer>()->BeginFrame();
-
-	scene->Draw(engine->Get<nc::Renderer>());
-	engine->Draw(engine->Get<nc::Renderer>());
 
 	nc::Transform t;
 	t.position = { 30, 30 };
 	engine->Get<nc::Renderer>()->Draw(textTexture, t);
 
-	engine->Get<nc::Renderer>()->EndFrame();
+	engine->Draw(engine->Get<nc::Renderer>());
+	scene->Draw(engine->Get<nc::Renderer>());
 
+	engine->Get<nc::Renderer>()->EndFrame();
 }
 
 void Game::UpdateTitle(float dt)
@@ -156,7 +155,7 @@ void Game::UpdateTitle(float dt)
 
 void Game::UpdateStartLevel(float dt)
 {
-	//scene->AddActor(std::make_unique<Player>(nc::Transform(nc::Vector2(400.0f, 300.0f), 0.0f, 3.0f), engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("player.txt"), 300.0f));
+	scene->AddActor(std::make_unique<Player>(nc::Transform(nc::Vector2(400.0f, 300.0f), 0.0f, 1.0f), engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("spaceShips_008.png", engine->Get<nc::Renderer>()), 300.0f));
 	//for (size_t i = 0; i < 2; i++)
 	//{
 	//	scene->AddActor(std::make_unique<Enemy>(nc::Transform{ nc::Vector2{nc::RandomRange(0.0f, 800.0f), nc::RandomRange(0.0f, 600.0f)}, nc::RandomRange(0.0f, nc::TwoPi), 3.0f }, engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("enemy.txt"), 100.0f));

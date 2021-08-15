@@ -31,6 +31,8 @@ namespace nc
 
 	bool Texture::Load(const std::string& name, void* data)
 	{
+		assert(data);
+
 		renderer = static_cast<Renderer*>(data)->renderer;
 
 		// load surface

@@ -31,7 +31,7 @@ namespace nc
 		void Draw(class Renderer* renderer) override;
 
 		void Create(const Vector2& position, size_t count, float lifetime, std::shared_ptr<Texture> texture, float speed);
-		void Create(const Vector2& position, size_t count, float lifetime, const std::vector<Color>& colors, float speed, float angle, float angleRange);
+		void Create(const Vector2& position, size_t count, float lifetime, std::shared_ptr<Texture> texture, float speed, float angle, float angleRange);
 
 	private:
 		std::vector<Particle> particles;
