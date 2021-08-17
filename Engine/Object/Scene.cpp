@@ -24,7 +24,9 @@ namespace nc
 				float distance = dir.Length();
 				if (distance < actors[i]->GetRadius() + actors[j]->GetRadius())
 				{
-					actors[i]->OnCollision(actors[j].get());
+					float f1 = actors[i]->GetRadius();
+					float f2 = actors[j]->GetRadius();
+ 					actors[i]->OnCollision(actors[j].get());
 					actors[j]->OnCollision(actors[i].get());
 				}
 			}
