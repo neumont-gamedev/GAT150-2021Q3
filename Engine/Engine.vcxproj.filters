@@ -33,6 +33,9 @@
     <Filter Include="Source\Resource">
       <UniqueIdentifier>{c04b0b0e-2a16-476c-84c2-b9a4fb33a27e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Component">
+      <UniqueIdentifier>{140f65cb-0bdd-44e1-936c-223252058b29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -88,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="Core\Utilities.cpp">
       <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\SpriteComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\PhysicsComponent.cpp">
+      <Filter>Source\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +174,18 @@
     </ClInclude>
     <ClInclude Include="Core\Utilities.h">
       <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Component.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\GraphicsComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\SpriteComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\PhysicsComponent.h">
+      <Filter>Source\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
