@@ -119,4 +119,11 @@ namespace nc
 		v = max;
 	}
 
+	std::ostream& operator<<(std::ostream& stream, const Color& color)
+	{
+		stream << color.r << " " << color.g << " " << color.b;
+
+		return stream;
+	}
+
 }

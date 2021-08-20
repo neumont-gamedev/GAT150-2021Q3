@@ -2,8 +2,6 @@
 #include <map>
 #include <memory>
 
-#define REGISTER_CLASS(CLASS) ObjectFactory::Instance().Register<CLASS>(#CLASS);
-
 namespace nc
 {
 	template<class TBase>

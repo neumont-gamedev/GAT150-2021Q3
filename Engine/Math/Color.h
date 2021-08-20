@@ -71,6 +71,7 @@ namespace nc
 		static void  RGBToHSV(const Color& color, float& h, float& s, float& v);
 
 		friend std::istream& operator >> (std::istream& stream, Color& color);
+		friend std::ostream& operator << (std::ostream& stream, const Color& color);
 
 		static const Color white;
 		static const Color red;

@@ -1,9 +1,12 @@
 #pragma once
 
+#define REGISTER_CLASS(CLASS) ObjectFactory::Instance().Register<CLASS>(#CLASS);
+
 // core
 #include "Core/Utilities.h"
 #include "Core/FileSystem.h"
 #include "Core/Timer.h"
+#include "Core/Json.h"
 
 // framework
 #include "Framework/EventSystem.h"
@@ -44,6 +47,7 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
+#include <cassert>
 
 namespace nc
 {
