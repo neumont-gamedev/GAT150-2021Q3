@@ -9,8 +9,8 @@ namespace nc
 	class SpriteComponent : public GraphicsComponent
 	{
 	public:
-		void Update() override;
-		void Draw(Renderer* renderer) override;
+		virtual void Update() override;
+		virtual void Draw(Renderer* renderer) override;
 
 	public:
 		std::shared_ptr<Texture> texture;
