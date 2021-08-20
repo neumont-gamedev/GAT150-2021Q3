@@ -38,6 +38,7 @@
 
 // components
 #include "Component/SpriteComponent.h"
+#include "Component/SpriteAnimationComponent.h"
 #include "Component/PhysicsComponent.h"
 
 #include <vector>

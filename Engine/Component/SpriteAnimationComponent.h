@@ -16,8 +16,8 @@ namespace nc
 		int frame;
 		int fps;
 
-		int numFrameX;
-		int numFrameY;
+		int numFramesX;
+		int numFramesY;
 
 		float frameTime;
 		float frameTimer;
