@@ -1,10 +1,10 @@
 {
-   "string":"hello world",
-   "boolean":true,
-   "integer1":123,
-   "integer2":456,
-   "float":3.1416,
-   "vector2":[
+   "str":"hello world",
+   "b":true,
+   "i1":123,
+   "i2":456,
+   "f":3.1416,
+   "v2":[
       100.0,
       200.0
    ],

@@ -16,23 +16,11 @@ void Game::Initialize()
 	nc::SeedRandom(static_cast<unsigned int>(time(nullptr)));
 	nc::SetFilePath("../Resources");
 
-	// actors
-	auto actor = nc::ObjectFactory::Instance().Create<nc::Actor>("Actor");
-	actor->transform = nc::Transform{ nc::Vector2{400, 300}, 0, 1 };
-	{
-		auto component = nc::ObjectFactory::Instance().Create<nc::SpriteAnimationComponent>("SpriteAnimationComponent");
-		component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("sparkle.png", engine->Get<nc::Renderer>());
-		component->fps = 16;
-		component->numFramesX = 8;
-		component->numFramesY = 8;
-		actor->AddComponent(std::move(component));
-	}
-	{
-		auto component = nc::ObjectFactory::Instance().Create<nc::PhysicsComponent>("PhysicsComponent");
-		//component->ApplyForce(nc::Vector2::right * 200);
-		actor->AddComponent(std::move(component));
-	}
-	scene->AddActor(std::move(actor));
+	rapidjson::Document document;
+	bool success = nc::json::Load("scene.txt", document);
+	assert(success);
+
+	scene->Read(document);
 }
 
 void Game::Shutdown()
