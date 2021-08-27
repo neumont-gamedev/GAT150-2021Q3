@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "GameComponent/PlayerComponent.h"
+#include "GameComponent/EnemyComponent.h"
 
 void Game::Initialize()
 {
@@ -10,6 +11,7 @@ void Game::Initialize()
 
 	// register classes
 	REGISTER_CLASS(PlayerComponent);
+	REGISTER_CLASS(EnemyComponent);
 
 	// create scene
 	scene = std::make_unique<nc::Scene>();

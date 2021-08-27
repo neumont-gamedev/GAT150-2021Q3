@@ -16,14 +16,17 @@ namespace nc
 		virtual bool Read(const rapidjson::Value& value) override;
 
 	public:
-		int frame;
-		int fps;
+		int frame{ 0 };
+		int fps{ 0 };
 
-		int numFramesX;
-		int numFramesY;
+		int numFramesX{ 0 };
+		int numFramesY{ 0 };
 
-		float frameTime;
-		float frameTimer;
+		int startFrame{ 0 };
+		int endFrame{ 0 };
+
+		float frameTime{ 0 };
+		float frameTimer{ 0 };
 
 		SDL_Rect rect;
 	};

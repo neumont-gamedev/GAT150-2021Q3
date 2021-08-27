@@ -11,9 +11,9 @@ namespace nc
 		{
 			frameTimer = 0;
 			frame++;
-			if (frame >= numFramesX * numFramesY)
+			if (frame >= endFrame)
 			{
-				frame = 0;
+				frame = startFrame;
 			}
 		}
 
@@ -44,6 +44,11 @@ namespace nc
 		JSON_READ(value, fps);
 		JSON_READ(value, numFramesX);
 		JSON_READ(value, numFramesY);
+		JSON_READ(value, startFrame);
+		JSON_READ(value, endFrame);
+
+		if (startFrame == 0 && endFrame == 0) endFrame = numFramesX * numFramesY;
+		frame = startFrame;
 
 		return true;
 	}
