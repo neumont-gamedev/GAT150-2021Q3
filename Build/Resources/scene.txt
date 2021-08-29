@@ -24,7 +24,28 @@
 					"numFramesX":18,
 					"numFramesY":11,
 					"startFrame": 90,
-					"endFrame": 95
+					"endFrame": 95,
+					"sequences": [
+						{
+							"name":"idle",
+							"sequence.fps":5,
+							"sequence.startFrame":0,
+							"sequence.endFrame": 1
+						},
+						{
+							"name":"walk_right",
+							"sequence.fps":10,
+							"sequence.startFrame":90,
+							"sequence.endFrame": 95
+						},
+						{
+							"name":"walk_left",
+							"sequence.fps":10,
+							"sequence.startFrame":162,
+							"sequence.endFrame": 167
+						}
+					],
+					"defaultSequence":"idle"		
 				},
 				{
 					"type":"RBPhysicsComponent",
@@ -50,7 +71,7 @@
 			"components":[
 				{
 					"type":"EnemyComponent",
-					"speed":5
+					"speed":2
 				},
 				{
 					"type":"SpriteAnimationComponent",
@@ -92,6 +113,22 @@
 					"data.density":1,
 					"data.size": [800,20]
 				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"Score",
+			"transform":{
+				"position": [60,20]
+			},
+			"components":[
+				{
+					"type":"TextComponent",
+					"fontName":"fonts/arcadeclassic.ttf",
+					"fontSize":16,
+					"color":[ 1, 1, 1],
+					"text": "Hello World!"
+				}				
 			]
 		}
 	]

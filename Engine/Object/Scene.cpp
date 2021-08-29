@@ -12,27 +12,7 @@ namespace nc
 
 		// update actors
 		std::for_each(actors.begin(), actors.end(), [dt](auto& actor) { actor->Update(dt); });
-
-		// check collisions
-		for (size_t i = 0; i < actors.size(); i++)
-		{
-			for (size_t j = i + 1; j < actors.size(); j++)
-			{
-				if (actors[i]->destroy || actors[j]->destroy) continue;
-
-				nc::Vector2 dir = actors[i]->transform.position - actors[j]->transform.position;
-				float distance = dir.Length();
-				if (distance < actors[i]->GetRadius() + actors[j]->GetRadius())
-				{
-					float f1 = actors[i]->GetRadius();
-					float f2 = actors[j]->GetRadius();
- 					actors[i]->OnCollision(actors[j].get());
-					actors[j]->OnCollision(actors[i].get());
-				}
-			}
-		}
-
-
+		
 		// destroy actor
 		auto iter = actors.begin();
 		while (iter != actors.end())
