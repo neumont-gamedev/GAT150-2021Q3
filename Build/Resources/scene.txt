@@ -2,6 +2,7 @@
 	"actors":[
 		{
 			"type":"Actor",
+			"prototype":"false",
 			"name":"Player",
 			"tag":"Player",
 			"transform":{
@@ -9,7 +10,10 @@
 					400,
 					300
 				],
-				"scale":[2, 2],
+				"scale":[
+					2,
+					2
+				],
 				"rotation":0
 			},
 			"components":[
@@ -23,29 +27,29 @@
 					"fps":10,
 					"numFramesX":18,
 					"numFramesY":11,
-					"startFrame": 90,
-					"endFrame": 95,
-					"sequences": [
+					"startFrame":90,
+					"endFrame":95,
+					"sequences":[
 						{
 							"name":"idle",
 							"sequence.fps":5,
 							"sequence.startFrame":0,
-							"sequence.endFrame": 1
+							"sequence.endFrame":1
 						},
 						{
 							"name":"walk_right",
 							"sequence.fps":10,
 							"sequence.startFrame":90,
-							"sequence.endFrame": 95
+							"sequence.endFrame":95
 						},
 						{
 							"name":"walk_left",
 							"sequence.fps":10,
 							"sequence.startFrame":162,
-							"sequence.endFrame": 167
+							"sequence.endFrame":167
 						}
 					],
-					"defaultSequence":"idle"		
+					"defaultSequence":"idle"
 				},
 				{
 					"type":"RBPhysicsComponent",
@@ -54,7 +58,10 @@
 					"data.lockAngle":true,
 					"data.restitution":0.1,
 					"data.gravityScale":1,
-					"data.size": [32,32]
+					"data.size":[
+						32,
+						32
+					]
 				}
 			]
 		},
@@ -88,7 +95,46 @@
 					"data.lockAngle":true,
 					"data.restitution":0.1,
 					"data.gravityScale":0,
-					"data.size": [32,32]
+					"data.size":[
+						32,
+						32
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"prototype":true,
+			"name":"Coin",
+			"tag":"Pickup",
+			"transform":{
+				"position":[
+					200,
+					300
+				]
+			},
+			"components":[
+				{
+					"type":"PickupComponent"
+				},
+				{
+					"type":"SpriteAnimationComponent",
+					"textureName":"coin.png",
+					"fps":10,
+					"numFramesX":8,
+					"numFramesY":1
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.isDynamic":true,
+					"data.density":1,
+					"data.lockAngle":true,
+					"data.restitution":0.1,
+					"data.gravityScale":1,
+					"data.size":[
+						32,
+						32
+					]
 				}
 			]
 		},
@@ -111,7 +157,10 @@
 					"type":"RBPhysicsComponent",
 					"data.isDynamic":false,
 					"data.density":1,
-					"data.size": [800,20]
+					"data.size":[
+						800,
+						20
+					]
 				}
 			]
 		},
@@ -119,16 +168,23 @@
 			"type":"Actor",
 			"name":"Score",
 			"transform":{
-				"position": [60,20]
+				"position":[
+					60,
+					20
+				]
 			},
 			"components":[
 				{
 					"type":"TextComponent",
 					"fontName":"fonts/arcadeclassic.ttf",
 					"fontSize":16,
-					"color":[ 1, 1, 1],
-					"text": "Hello World!"
-				}				
+					"color":[
+						1,
+						1,
+						1
+					],
+					"text":"Hello World!"
+				}
 			]
 		}
 	]
