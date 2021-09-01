@@ -2,7 +2,6 @@
 	"actors":[
 		{
 			"type":"Actor",
-			"prototype":"false",
 			"name":"Player",
 			"tag":"Player",
 			"transform":{
@@ -19,7 +18,8 @@
 			"components":[
 				{
 					"type":"PlayerComponent",
-					"speed":10
+					"speed":20,
+					"jump":500
 				},
 				{
 					"type":"SpriteAnimationComponent",
@@ -60,7 +60,7 @@
 					"data.gravityScale":1,
 					"data.size":[
 						32,
-						32
+						64
 					]
 				}
 			]
@@ -160,6 +160,62 @@
 					"data.size":[
 						800,
 						20
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile01",
+			"tag":"Ground",
+			"prototype": true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"tileset2_32x32.png",
+					"rect":[416, 128, 32, 32]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.isDynamic":false,
+					"data.density":1,
+					"data.size":[
+						64,
+						64
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile02",
+			"tag":"Ground",
+			"prototype": true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"tileset2_32x32.png",
+					"rect":[0, 128, 32, 32]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.isDynamic":false,
+					"data.density":1,
+					"data.size":[
+						64,
+						64
 					]
 				}
 			]
