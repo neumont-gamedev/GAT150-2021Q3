@@ -20,6 +20,7 @@ namespace nc
 				scene->AddActor(std::move(actor));
 			}
 		}
+
 	}
 
 	bool Tilemap::Write(const rapidjson::Value& value) const
