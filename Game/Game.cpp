@@ -28,6 +28,13 @@ void Game::Initialize()
 
 	scene->Read(document);
 
+	nc::Tilemap tilemap;
+	tilemap.scene = scene.get();
+	success = nc::json::Load("map.txt", document);
+	assert(success);
+	tilemap.Read(document);
+	tilemap.Create();
+
 	for (int i = 0; i < 30; i++)
 	{
 		auto actor = nc::ObjectFactory::Instance().Create<nc::Actor>("Coin");
