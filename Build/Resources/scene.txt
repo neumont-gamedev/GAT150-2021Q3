@@ -4,6 +4,7 @@
 			"type":"Actor",
 			"name":"Player",
 			"tag":"Player",
+			"prototype":true,
 			"transform":{
 				"position":[
 					400,
@@ -60,7 +61,7 @@
 					"data.gravityScale":1,
 					"data.size":[
 						32,
-						64
+						62
 					]
 				}
 			]
@@ -140,32 +141,6 @@
 		},
 		{
 			"type":"Actor",
-			"tag":"Ground",
-			"transform":{
-				"position":[
-					400,
-					550
-				],
-				"rotation":0
-			},
-			"components":[
-				{
-					"type":"SpriteComponent",
-					"textureName":"ground.png"
-				},
-				{
-					"type":"RBPhysicsComponent",
-					"data.isDynamic":false,
-					"data.density":1,
-					"data.size":[
-						800,
-						20
-					]
-				}
-			]
-		},
-		{
-			"type":"Actor",
 			"name":"tile01",
 			"tag":"Ground",
 			"prototype": true,
@@ -179,7 +154,7 @@
 				{
 					"type":"SpriteComponent",
 					"textureName":"tileset2_32x32.png",
-					"rect":[416, 128, 32, 32]
+					"rect":[96, 416, 32, 32]
 				},
 				{
 					"type":"RBPhysicsComponent",
@@ -217,29 +192,6 @@
 						64,
 						64
 					]
-				}
-			]
-		},
-		{
-			"type":"Actor",
-			"name":"Score",
-			"transform":{
-				"position":[
-					60,
-					20
-				]
-			},
-			"components":[
-				{
-					"type":"TextComponent",
-					"fontName":"fonts/arcadeclassic.ttf",
-					"fontSize":16,
-					"color":[
-						1,
-						1,
-						1
-					],
-					"text":"Hello World!"
 				}
 			]
 		}

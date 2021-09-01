@@ -5,7 +5,7 @@ using namespace nc;
 
 PickupComponent::~PickupComponent()
 {
-	owner->scene->engine->Get<EventSystem>()->Unsubscribe("collision_enter", this);
+	owner->scene->engine->Get<EventSystem>()->Unsubscribe("collision_enter", owner);
 }
 
 void PickupComponent::Create()
@@ -29,6 +29,12 @@ void PickupComponent::OnCollisionEnter(const Event& event)
 	{
 		owner->destroy = true;
 		owner->scene->engine->Get<AudioSystem>()->PlayAudio("coin");
+
+		Event event;
+		event.name = "add_score";
+		event.data = 10;
+
+		owner->scene->engine->Get<EventSystem>()->Notify(event);
 	}
 }
 

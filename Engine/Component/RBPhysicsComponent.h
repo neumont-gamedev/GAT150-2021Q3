@@ -7,8 +7,10 @@ namespace nc
 	class RBPhysicsComponent : public PhysicsComponent
 	{
 	public:
-		std::unique_ptr<Object> Clone() const { return std::make_unique<RBPhysicsComponent>(*this); }
+		RBPhysicsComponent() = default;
+		RBPhysicsComponent(const RBPhysicsComponent& other);
 		~RBPhysicsComponent();
+		std::unique_ptr<Object> Clone() const { return std::make_unique<RBPhysicsComponent>(*this); }
 
 		void Update() override;
 		void ApplyForce(const Vector2& force) override;
