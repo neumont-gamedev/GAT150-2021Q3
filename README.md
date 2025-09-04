@@ -1,3 +1,6 @@
+<img width="843" height="640" alt="image" src="https://github.com/user-attachments/assets/0bdf1681-2f63-4cdf-9ebc-f496fdf210d1" />
+
+
 # GAT150 – Introduction to Game Programming (2021Q3)
 
 **Course Repository for Neumont College – GAT150 (Q3 2021)**
